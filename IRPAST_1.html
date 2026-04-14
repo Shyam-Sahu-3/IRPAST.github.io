@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CHANGE TEXT HERE -->
+  <title>IRPAST | Sustainable Solutions for a Better Tomorrow</title>
+  <meta name="description" content="IRPAST creates eco-friendly solutions to everyday problems through sustainable design, reusable products, and future-focused innovation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f8f1;--bg2:#edf5e7;--card:rgba(255,255,255,.62);--card-strong:rgba(255,255,255,.82);
+      --text:#1d3328;--muted:#5d7365;--head:#10251b;--line:rgba(16,37,27,.1);--brand:#2f7d4d;
+      --brand-dark:#1f5b38;--leaf:#91c173;--earth:#d9c3a1;--shadow:0 18px 44px rgba(21,48,34,.10);
+      --shadow-lg:0 22px 48px rgba(21,48,34,.14);--r-xl:30px;--r-lg:22px;--r-md:18px;--r-sm:14px;
+      --max:1160px;--speed:.35s ease;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(145,193,115,.24),transparent 28%),
+        radial-gradient(circle at 88% 12%,rgba(217,195,161,.30),transparent 24%),
+        radial-gradient(circle at 80% 82%,rgba(47,125,77,.12),transparent 24%),
+        linear-gradient(180deg,#f8fbf6 0%,var(--bg) 40%,var(--bg2) 100%);
+    }
+    body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(28px);opacity:.7;pointer-events:none}
+    body:before{width:320px;height:320px;left:-8%;top:8%;background:rgba(145,193,115,.18)}
+    body:after{width:360px;height:360px;right:-10%;bottom:8%;background:rgba(47,125,77,.10)}
+    img{display:block;width:100%}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    .container{width:min(calc(100% - 2rem),var(--max));margin:0 auto}
+    .section{padding:5.4rem 0}
+    .glass{
+      background:var(--card);border:1px solid rgba(255,255,255,.48);box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .95rem;margin-bottom:1rem;border-radius:999px;
+      font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark);
+      background:rgba(255,255,255,.56);border:1px solid rgba(47,125,77,.12)
+    }
+    .eyebrow:before{
+      content:"";width:.62rem;height:.62rem;border-radius:50%;
+      background:linear-gradient(135deg,var(--leaf),var(--brand));box-shadow:0 0 0 6px rgba(145,193,115,.15)
+    }
+    h1,h2,h3,.logo{font-family:"Poppins",sans-serif;color:var(--head);line-height:1.08}
+    h1{font-size:clamp(3rem,7vw,5.6rem);letter-spacing:-.05em}
+    h2{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.04em;margin-bottom:1rem}
+    h3{font-size:1.2rem;margin-bottom:.65rem}
+    p{color:var(--muted)}
+    .section-head{max-width:660px;margin-bottom:2.4rem}
+    .navbar-wrap{position:sticky;top:1rem;z-index:40;padding-top:1rem}
+    .navbar{
+      position:relative;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;border-radius:999px
+    }
+    .logo{font-size:1.35rem;font-weight:800;letter-spacing:.08em}
+    .nav-links{display:flex;gap:1.35rem;font-weight:600;color:var(--muted)}
+    .nav-links a{position:relative;transition:color var(--speed)}
+    .nav-links a:after{
+      content:"";position:absolute;left:0;bottom:-.35rem;width:100%;height:2px;border-radius:999px;
+      background:linear-gradient(90deg,var(--leaf),var(--brand));transform:scaleX(0);transition:transform var(--speed)
+    }
+    .nav-links a:hover,.nav-links a:focus-visible{color:var(--head);outline:none}
+    .nav-links a:hover:after,.nav-links a:focus-visible:after{transform:scaleX(1)}
+    .menu-toggle{
+      display:none;width:48px;height:48px;border:0;border-radius:50%;background:rgba(255,255,255,.74);
+      box-shadow:var(--shadow);color:var(--head);cursor:pointer
+    }
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .cart-pill{
+      display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 1rem;border:none;border-radius:999px;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),#5aa06d);color:#f7fff8;font-weight:700;box-shadow:0 14px 28px rgba(47,125,77,.22);
+      transition:transform var(--speed),box-shadow var(--speed)
+    }
+    .cart-pill:hover,.cart-pill:focus-visible{transform:translateY(-3px);box-shadow:0 18px 28px rgba(21,48,34,.16);outline:none}
+    .cart-count{
+      min-width:1.7rem;padding:.12rem .45rem;border-radius:999px;background:rgba(255,255,255,.18);text-align:center;font-size:.84rem
+    }
+    .hero{padding:4rem 0 2.5rem}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:2rem;align-items:center;min-height:calc(100vh - 8rem)}
+    .hero-copy p{max-width:610px;margin-top:1.2rem;font-size:1.05rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:.95rem 1.4rem;border-radius:999px;
+      border:1px solid transparent;font-weight:700;transition:transform var(--speed),box-shadow var(--speed),background var(--speed),border-color var(--speed)
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--brand),#5aa06d);color:#f7fff8;box-shadow:0 16px 30px rgba(47,125,77,.25)}
+    .btn-secondary{background:rgba(255,255,255,.56);border-color:var(--line);color:var(--head)}
+    .btn:hover,.btn:focus-visible{transform:translateY(-3px);box-shadow:0 18px 28px rgba(21,48,34,.16);outline:none}
+    .visual{position:relative}
+    .visual-card{
+      position:relative;overflow:hidden;padding:1rem;border-radius:var(--r-xl);min-height:520px;
+      background:linear-gradient(160deg,rgba(255,255,255,.80),rgba(236,246,231,.62));border:1px solid rgba(255,255,255,.65);box-shadow:var(--shadow-lg)
+    }
+    .visual-card:before{
+      content:"";position:absolute;right:-12%;bottom:-26%;width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle,rgba(145,193,115,.5),transparent 70%);filter:blur(16px)
+    }
+    .hero-image{position:relative;overflow:hidden;border-radius:26px;height:100%}
+    .hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,37,27,.06),rgba(16,37,27,.22))}
+    .hero-image img{height:100%;min-height:360px;object-fit:cover;transform:scale(1.04)}
+    .chip,.note{
+      position:absolute;padding:1rem 1.05rem;border-radius:20px;background:rgba(255,255,255,.74);
+      border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+    }
+    .chip{top:1.25rem;left:-1rem;max-width:190px}
+    .note{right:-.6rem;bottom:1.4rem;max-width:210px}
+    .mini{display:block;margin-bottom:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark)}
+    .num{font-family:"Poppins",sans-serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:.35rem;color:var(--head)}
+    .about-grid,.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+    .about-card,.contact-card,.contact-form{padding:1.7rem;border-radius:var(--r-lg)}
+    .about-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    .highlight,.contact-item{
+      padding:1rem;border-radius:var(--r-md);background:rgba(255,255,255,.48);border:1px solid rgba(16,37,27,.08)
+    }
+    .solutions,.gallery{display:grid;gap:1.25rem}
+    .solutions{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .solution{
+      position:relative;overflow:hidden;padding:1.45rem;border-radius:var(--r-lg);
+      background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(244,250,240,.68));
+      border:1px solid rgba(16,37,27,.08);box-shadow:var(--shadow);transition:transform var(--speed),box-shadow var(--speed),border-color var(--speed)
+    }
+    .solution:before{
+      content:"";position:absolute;right:-28%;bottom:-34%;width:170px;height:170px;border-radius:50%;
+      background:radial-gradient(circle,rgba(145,193,115,.24),transparent 70%);transition:transform var(--speed)
+    }
+    .solution:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(47,125,77,.18)}
+    .solution:hover:before{transform:scale(1.12)}
+    .solution-media,.product-media{
+      height:180px;margin-bottom:1rem;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.72);position:relative
+    }
+    .solution-media{
+      background:
+        linear-gradient(135deg,rgba(217,195,161,.56),rgba(145,193,115,.82)),
+        linear-gradient(180deg,rgba(255,255,255,.35),transparent)
+    }
+    .product-media{
+      background:
+        linear-gradient(135deg,rgba(238,246,231,.98),rgba(217,195,161,.52)),
+        linear-gradient(180deg,rgba(255,255,255,.35),transparent)
+    }
+    .solution-media:after,.product-media:after{
+      position:absolute;inset:0;display:grid;place-items:center;font-size:.9rem;font-weight:700;letter-spacing:.08em;
+      text-transform:uppercase;color:rgba(16,37,27,.72)
+    }
+    .solution-media:after{content:"Image Placeholder"}
+    .product-media:after{content:"Product Image"}
+    .icon{
+      width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;border-radius:18px;color:var(--brand-dark);
+      background:linear-gradient(135deg,rgba(145,193,115,.22),rgba(47,125,77,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.6)
+    }
+    .icon svg{width:28px;height:28px}
+    .gallery-card{
+      overflow:hidden;border-radius:var(--r-lg);background:var(--card-strong);border:1px solid rgba(16,37,27,.08);box-shadow:var(--shadow)
+    }
+    .gallery-card img{height:260px;object-fit:cover;transition:transform .7s ease}
+    .gallery-card:hover img{transform:scale(1.06)}
+    .gallery-copy{padding:1rem 1rem 1.1rem}
+    .contact-list{display:grid;gap:.9rem;margin-top:1rem}
+    .contact-item span{display:block;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark);margin-bottom:.25rem}
+    .social{display:flex;flex-wrap:wrap;gap:.8rem}
+    .social a{
+      padding:.8rem 1rem;border-radius:999px;background:rgba(255,255,255,.56);border:1px solid rgba(16,37,27,.08);
+      transition:transform var(--speed),border-color var(--speed),background var(--speed)
+    }
+    .social a:hover,.social a:focus-visible{transform:translateY(-2px);border-color:rgba(47,125,77,.24);background:rgba(255,255,255,.85);outline:none}
+    form{display:grid;gap:1rem}
+    .field{display:grid;gap:.45rem}
+    .field label{font-size:.94rem;font-weight:600;color:var(--head)}
+    .field input,.field textarea{
+      width:100%;padding:.95rem 1rem;border-radius:16px;border:1px solid rgba(16,37,27,.12);background:rgba(255,255,255,.82);
+      color:var(--text);transition:border-color var(--speed),box-shadow var(--speed),transform var(--speed)
+    }
+    .field input:focus,.field textarea:focus{
+      outline:none;transform:translateY(-1px);border-color:rgba(47,125,77,.35);box-shadow:0 0 0 4px rgba(145,193,115,.15)
+    }
+    textarea{min-height:140px;resize:vertical}
+    .shop-band{
+      display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-bottom:1.5rem;padding:1.6rem 1.7rem;border-radius:var(--r-lg);
+      background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(236,246,231,.72));border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow-lg)
+    }
+    .shop-badge{
+      min-width:190px;padding:1rem 1.15rem;border-radius:20px;background:linear-gradient(135deg,var(--brand-dark),var(--brand));color:#f7fff8
+    }
+    .shop-badge strong{display:block;font-family:"Poppins",sans-serif;font-size:1.6rem;line-height:1.1;margin-bottom:.25rem}
+    .products,.features{display:grid;gap:1.25rem}
+    .products{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .features{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .product,.feature{
+      padding:1.25rem;border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(244,250,240,.72));
+      border:1px solid rgba(16,37,27,.08);box-shadow:var(--shadow);transition:transform var(--speed),box-shadow var(--speed),border-color var(--speed)
+    }
+    .product:hover,.feature:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(47,125,77,.18)}
+    .product-top,.cart-row,.cart-item{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .price{font-weight:800;color:var(--brand-dark)}
+    .product button,.checkout{
+      width:100%;margin-top:1rem;padding:.9rem 1rem;border:none;border-radius:999px;cursor:pointer;font-weight:700;
+      background:linear-gradient(135deg,var(--brand),#5aa06d);color:#f7fff8;box-shadow:0 12px 24px rgba(47,125,77,.18);
+      transition:transform var(--speed),box-shadow var(--speed)
+    }
+    .product button:hover,.product button:focus-visible,.checkout:hover,.checkout:focus-visible{transform:translateY(-3px);box-shadow:0 18px 28px rgba(21,48,34,.16);outline:none}
+    .feature .icon{margin-bottom:1rem}
+    .cart-overlay{
+      position:fixed;inset:0;background:rgba(16,37,27,.28);opacity:0;visibility:hidden;transition:opacity var(--speed),visibility var(--speed);z-index:45
+    }
+    .cart-overlay.show{opacity:1;visibility:visible}
+    .cart-drawer{
+      position:fixed;top:0;right:0;z-index:50;width:min(100%,380px);height:100vh;padding:1.3rem;background:rgba(255,255,255,.96);
+      border-left:1px solid rgba(16,37,27,.08);box-shadow:-24px 0 40px rgba(21,48,34,.12);display:flex;flex-direction:column;gap:1rem;
+      transform:translateX(100%);transition:transform var(--speed)
+    }
+    .cart-drawer.open{transform:translateX(0)}
+    .cart-head{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .cart-close{
+      width:42px;height:42px;border:none;border-radius:50%;cursor:pointer;background:rgba(47,125,77,.10);color:var(--head)
+    }
+    .cart-items{
+      flex:1;overflow:auto;display:grid;gap:.9rem;padding-right:.1rem
+    }
+    .cart-item{
+      align-items:flex-start;padding:1rem;border-radius:18px;background:rgba(244,250,240,.92);border:1px solid rgba(16,37,27,.08)
+    }
+    .cart-item h4{font-size:1rem;margin-bottom:.2rem}
+    .cart-item p,.cart-empty,.cart-copy,.cart-meta{font-size:.95rem;color:var(--muted)}
+    .remove-item{
+      border:none;background:transparent;color:var(--brand-dark);font-weight:700;cursor:pointer
+    }
+    .cart-summary{
+      padding:1rem;border-radius:18px;background:rgba(244,250,240,.92);border:1px solid rgba(16,37,27,.08)
+    }
+    .form-success{
+      display:none;padding:.95rem 1rem;border-radius:16px;background:rgba(145,193,115,.18);color:var(--brand-dark);font-weight:700
+    }
+    .form-success.show{display:block}
+    footer{padding:1.5rem 0 2.5rem}
+    .footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.35rem;border-radius:22px}
+    .footer p{font-size:.95rem}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .enter{animation:enter 1.15s ease both}
+    .float{animation:float 7s ease-in-out infinite}
+    @keyframes enter{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @media (max-width:1024px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .solutions,.gallery,.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .features{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-grid{min-height:auto}
+      .chip{left:1rem}.note{right:1rem}
+    }
+    @media (max-width:760px){
+      h1{font-size:clamp(2.8rem,12vw,4rem)}
+      .navbar{align-items:flex-start;border-radius:28px}
+      .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .nav-right{align-items:flex-start;flex-wrap:wrap;justify-content:flex-end}
+      .nav-links{
+        position:absolute;top:calc(100% + .75rem);left:0;right:0;flex-direction:column;align-items:flex-start;gap:1rem;padding:1.1rem;
+        border-radius:24px;background:rgba(255,255,255,.84);border:1px solid rgba(16,37,27,.08);box-shadow:var(--shadow);
+        opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity var(--speed),transform var(--speed),visibility var(--speed)
+      }
+      .nav-links.open{opacity:1;visibility:visible;transform:translateY(0)}
+      .hero-actions,.footer,.shop-band{flex-direction:column;align-items:flex-start}
+      .about-highlights,.solutions,.gallery,.products,.features{grid-template-columns:1fr}
+      .visual-card{min-height:420px}
+      .hero-image img{min-height:320px}
+      .chip,.note{position:static;max-width:none}
+      .visual{display:grid;gap:1rem}
+      .cart-pill{padding:.78rem .92rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar-wrap">
+    <div class="container">
+      <nav class="navbar glass" aria-label="Primary navigation">
+        <!-- CHANGE TEXT HERE -->
+        <a class="logo" href="#home">IRPAST</a>
+        <div class="nav-right">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+          </button>
+          <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#shop">Shop</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button class="cart-pill" id="cartToggle" aria-label="Open cart">
+            <span>Cart</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy enter">
+            <span class="eyebrow">Eco Future, Designed With Purpose</span>
+            <!-- CHANGE TEXT HERE -->
+            <h1>Sustainable Solutions for a Better Tomorrow</h1>
+            <!-- CHANGE TEXT HERE -->
+            <p>IRPAST creates eco-friendly innovations for everyday life, blending thoughtful design, clean materials, and practical ideas that make sustainable living feel effortless.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#solutions">Explore Solutions</a>
+              <a class="btn btn-secondary" href="#shop">Shop Now</a>
+            </div>
+          </div>
+
+          <div class="visual float">
+            <div class="visual-card">
+              <!-- REPLACE IMAGE HERE -->
+              <!-- Replace the image URL below with your own eco or nature-themed hero image -->
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=1200&q=80" alt="Lush green forest representing sustainable innovation">
+              </div>
+              <div class="chip reveal">
+                <span class="mini">Impact Snapshot</span>
+                <div class="num">86%</div>
+                <p>of modern consumers value brands committed to greener living.</p>
+              </div>
+              <div class="note reveal">
+                <span class="mini">IRPAST Vision</span>
+                <p>Building practical eco systems that feel seamless, beautiful, and future-ready.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">About IRPAST</span>
+          <h2>Organic thinking meets modern innovation.</h2>
+          <!-- CHANGE TEXT HERE -->
+          <p>IRPAST focuses on eco-friendly solutions to everyday problems by turning sustainability into a practical lifestyle choice. Our mission is to solve basic challenges with greener ideas that feel useful, affordable, and easy to adopt.</p>
+        </div>
+        <div class="about-grid">
+          <article class="about-card glass reveal">
+            <h3>Built around sustainability first</h3>
+            <p>From material choices to daily-use systems, every concept is shaped to reduce environmental impact without compromising usability, beauty, or long-term value.</p>
+            <div class="about-highlights">
+              <div class="highlight"><h3>Cleaner Living</h3><p>Simple, low-waste ideas for more mindful routines and better habits.</p></div>
+              <div class="highlight"><h3>Smarter Systems</h3><p>Innovation that helps people save energy, resources, and time every day.</p></div>
+            </div>
+          </article>
+          <article class="about-card glass reveal">
+            <h3>Designed for a better future</h3>
+            <p>The IRPAST brand stands for a cleaner tomorrow powered by intelligent design, human-centered experiences, and a commitment to real environmental progress.</p>
+            <div class="about-highlights">
+              <div class="highlight"><h3>Eco Innovation</h3><p>Technology and sustainability working together in ways that feel natural.</p></div>
+              <div class="highlight"><h3>Future Focus</h3><p>Long-term thinking that supports resilient communities and healthier ecosystems.</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Solutions</span>
+          <h2>Everyday ideas with measurable green impact.</h2>
+          <p>Each IRPAST solution is designed to feel accessible, practical, and adaptable to modern homes, workspaces, and communities.</p>
+        </div>
+        <div class="solutions">
+          <article class="solution reveal">
+            <div class="solution-media" aria-hidden="true"></div>
+            <h3>Reusable Kits</h3>
+            <p>Starter kits packed with reusable everyday essentials for kitchens, workspaces, and on-the-go lifestyles.</p>
+          </article>
+          <article class="solution reveal">
+            <div class="solution-media" aria-hidden="true"></div>
+            <h3>Solar Tools</h3>
+            <p>Compact solar-powered tools that bring clean energy into daily routines without complexity.</p>
+          </article>
+          <article class="solution reveal">
+            <div class="solution-media" aria-hidden="true"></div>
+            <h3>Biodegradable Products</h3>
+            <p>Daily-use alternatives made from more responsible materials that help reduce long-term waste.</p>
+          </article>
+          <article class="solution reveal">
+            <div class="solution-media" aria-hidden="true"></div>
+            <h3>Refill Systems</h3>
+            <p>Simple refill-focused concepts that help households buy less packaging and reuse more often.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="shop-band reveal">
+          <div>
+            <span class="eyebrow">Shop IRPAST</span>
+            <h2>Dedicated eco store with simple cart functionality.</h2>
+            <p>Browse clean, beginner-friendly product cards with editable names, prices, and image placeholders. The cart works with lightweight JavaScript and no backend.</p>
+          </div>
+          <div class="shop-badge">
+            <strong>Eco Store</strong>
+            <span>Soft visuals, clear products, and responsive shopping flow.</span>
+          </div>
+        </div>
+
+        <div class="products">
+          <!-- EDIT PRODUCT DETAILS HERE -->
+          <article class="product reveal">
+            <div class="product-media" aria-hidden="true"></div>
+            <div class="product-top">
+              <h3>Reusable Kitchen Kit</h3>
+              <span class="price">$24</span>
+            </div>
+            <p>A low-waste starter bundle with reusable cloths, jars, and smart kitchen essentials.</p>
+            <button class="add-to-cart" data-name="Reusable Kitchen Kit" data-price="24">Add to Cart</button>
+          </article>
+
+          <article class="product reveal">
+            <div class="product-media" aria-hidden="true"></div>
+            <div class="product-top">
+              <h3>Solar Desk Light</h3>
+              <span class="price">$32</span>
+            </div>
+            <p>A compact solar-powered light designed for desks, reading corners, and backup use.</p>
+            <button class="add-to-cart" data-name="Solar Desk Light" data-price="32">Add to Cart</button>
+          </article>
+
+          <article class="product reveal">
+            <div class="product-media" aria-hidden="true"></div>
+            <div class="product-top">
+              <h3>Biodegradable Home Pack</h3>
+              <span class="price">$18</span>
+            </div>
+            <p>Everyday biodegradable basics that help reduce plastic-heavy household choices.</p>
+            <button class="add-to-cart" data-name="Biodegradable Home Pack" data-price="18">Add to Cart</button>
+          </article>
+
+          <article class="product reveal">
+            <div class="product-media" aria-hidden="true"></div>
+            <div class="product-top">
+              <h3>Travel Refill Bottles</h3>
+              <span class="price">$15</span>
+            </div>
+            <p>Minimal refillable bottles for carrying liquids without disposable travel packaging.</p>
+            <button class="add-to-cart" data-name="Travel Refill Bottles" data-price="15">Add to Cart</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why Choose Us</span>
+          <h2>Modern sustainability designed for real everyday use.</h2>
+          <p>IRPAST focuses on thoughtful eco-friendly design that balances beauty, affordability, and practical innovation.</p>
+        </div>
+        <div class="features">
+          <article class="feature reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 3 6 5.5 6 9a6 6 0 1 1-12 0c0-3.5 2-6 6-9z"></path><path d="M10 13c.5 1 1.3 1.5 2 1.5 1.1 0 1.8-.7 2-1.5"></path></svg></div>
+            <h3>Eco-friendly</h3>
+            <p>Every product idea is shaped to reduce waste, encourage reuse, and support cleaner routines.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"></path><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H6"></path></svg></div>
+            <h3>Affordable</h3>
+            <p>We aim to make sustainable choices feel realistic and accessible for more people.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.2 4.8L19 9l-4.8 2.2L12 16l-2.2-4.8L5 9l4.8-2.2L12 2z"></path><path d="m19 15 1.2 2.8L23 19l-2.8 1.2L19 23l-1.2-2.8L15 19l2.8-1.2L19 15z"></path></svg></div>
+            <h3>Innovative</h3>
+            <p>Our concepts bring together clean aesthetics, modern function, and everyday environmental care.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>Let's build a greener future together.</h2>
+          <p>Connect with IRPAST to discuss collaborations, eco-friendly ideas, or sustainability-driven projects.</p>
+        </div>
+        <div class="contact-grid">
+          <aside class="contact-card glass reveal">
+            <h3>Get in touch</h3>
+            <p>We're always open to meaningful partnerships, product conversations, and future-focused innovation.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span>Email</span>
+                <!-- CHANGE TEXT HERE -->
+                <a href="mailto:hello@irpast.com">hello@irpast.com</a>
+              </div>
+              <div class="contact-item">
+                <span>Phone</span>
+                <!-- CHANGE TEXT HERE -->
+                <a href="tel:+910000000000">+91 00000 00000</a>
+              </div>
+              <div class="contact-item">
+                <span>Follow</span>
+                <div class="social">
+                  <!-- CHANGE TEXT HERE -->
+                  <a href="#" aria-label="Instagram">Instagram</a>
+                  <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                  <a href="#" aria-label="X / Twitter">X / Twitter</a>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="contact-form glass reveal">
+            <h3>Send a message</h3>
+            <p style="margin-bottom:1rem">Use the form below to collect inquiries from visitors.</p>
+            <form action="#" method="post" id="contactForm">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required></div>
+              <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us about your idea..." required></textarea></div>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+            </form>
+            <p style="margin-top:.9rem;color:var(--muted)">This is a front-end demo form. You can connect it to email or a backend later.</p>
+            <div class="form-success" id="formSuccess">Thank you. Your message has been captured in this demo.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-head">
+      <div>
+        <h2 style="font-size:1.5rem;margin-bottom:.2rem">Your Cart</h2>
+        <p class="cart-copy">Front-end demo cart with no backend required.</p>
+      </div>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty. Add a product from the shop section to see it here.</div>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-row">
+        <strong>Subtotal</strong>
+        <strong id="cartTotal">$0</strong>
+      </div>
+      <p class="cart-meta" style="margin-top:.4rem">This demo can be connected to checkout later.</p>
+    </div>
+    <button class="checkout" type="button">Proceed to Checkout</button>
+  </aside>
+
+  <footer>
+    <div class="container">
+      <div class="footer glass">
+        <!-- CHANGE TEXT HERE -->
+        <p>&copy; 2026 IRPAST. All rights reserved.</p>
+        <div class="social">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="X / Twitter">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const revealItems = document.querySelectorAll(".reveal");
+    const navItems = document.querySelectorAll(".nav-links a");
+    const cartToggle = document.getElementById("cartToggle");
+    const cartClose = document.getElementById("cartClose");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartCount = document.getElementById("cartCount");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    const contactForm = document.getElementById("contactForm");
+    const formSuccess = document.getElementById("formSuccess");
+    const cart = [];
+
+    menuToggle?.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    function openCart() {
+      cartDrawer.classList.add("open");
+      cartOverlay.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove("open");
+      cartOverlay.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function formatPrice(price) {
+      return "$" + price.toFixed(2).replace(".00", "");
+    }
+
+    function updateCart() {
+      cartCount.textContent = cart.length;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty. Add a product from the shop section to see it here.</div>';
+        cartTotal.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+      cartItems.innerHTML = "";
+
+      cart.forEach((item, index) => {
+        total += item.price;
+
+        const itemElement = document.createElement("div");
+        itemElement.className = "cart-item";
+        itemElement.innerHTML = `
+          <div>
+            <h4>${item.name}</h4>
+            <p>${formatPrice(item.price)}</p>
+          </div>
+          <button class="remove-item" data-index="${index}">Remove</button>
+        `;
+
+        cartItems.appendChild(itemElement);
+      });
+
+      cartTotal.textContent = formatPrice(total);
+
+      document.querySelectorAll(".remove-item").forEach((button) => {
+        button.addEventListener("click", () => {
+          const itemIndex = Number(button.getAttribute("data-index"));
+          cart.splice(itemIndex, 1);
+          updateCart();
+        });
+      });
+    }
+
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        cart.push({
+          name: button.getAttribute("data-name"),
+          price: Number(button.getAttribute("data-price"))
+        });
+        updateCart();
+        openCart();
+      });
+    });
+
+    cartToggle?.addEventListener("click", openCart);
+    cartClose?.addEventListener("click", closeCart);
+    cartOverlay?.addEventListener("click", closeCart);
+
+    contactForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formSuccess.classList.add("show");
+      contactForm.reset();
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => observer.observe(item));
+    updateCart();
+  </script>
+</body>
+</html>
